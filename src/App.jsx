@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import {Routes, Route, BrowserRouter} from 'react-router-dom'
-import Hmoe from './components/Home';
+import Home from './components/Home';
 import Auth from './components/Auth';
 
 function App() {
@@ -10,8 +10,8 @@ function App() {
     <BrowserRouter>
     <div className=''>
       <Routes>
-        <Route path='/' element={<Login/>}/>
-        <Route path='/home' element={Auth/>}/>
+        <Route path='/' element={<Auth/>}/>
+        <Route path='/home' element={Home/>}/>
       </Routes>
     </div>
     </BrowserRouter>
