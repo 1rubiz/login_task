@@ -15,7 +15,7 @@ import {
 
 
 const Auth = () => {
-    const [state, setState] = useState(true)
+    const [state, setState] = useState(false)
     useEffect(()=>{
       localStorage.setItem('isUser', false);
     },[]);
@@ -175,9 +175,9 @@ const Login = ({setState})=>{
           )}
             <div className="mt-4 text-center text-sm">
             Don&apos;t have an account?{" "}
-            <span onClick={()=> setState(true)} className="underline cursor-pointer">
+            {/*<span onClick={()=> setState(true)} className="underline cursor-pointer">
                 Sign up
-            </span>
+            </span>*/}
             </div>
         </div>
       </form>
