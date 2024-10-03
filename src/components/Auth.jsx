@@ -24,9 +24,7 @@ const Auth = () => {
     <div className="w-full lg:grid h-screen lg:grid-cols-2 object-fill lg:bg-none">
       <div className="flex items-center justify-center py-12 h-full">
         <div>
-            {
-                state ? <Signup setState={setState}/> : <Login setState={setState}/>
-            }
+              <Login setState={setState}/>
         </div>
       </div>
       <div className="col-span-1 hidden bg-muted lg:flex items-center justify-center w-full max-h-screen bg-[url('https://res.cloudinary.com/dotojp6xu/image/upload/v1715162527/samples/chair-and-coffee-table.jpg')] object-contain">
