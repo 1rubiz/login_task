@@ -126,7 +126,6 @@ const Login = ({setState})=>{
     return(
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded shadow-md w-full max-w-sm"
       >
         <div className="mx-auto grid w-[350px] gap-6">
             <div className="grid gap-2 text-center">
