@@ -16,6 +16,7 @@ import {
 
 const Auth = () => {
     const [state, setState] = useState(true)
+    
   return (
     <div className="w-full lg:grid h-screen lg:grid-cols-2 bg-[url('/img2.jpeg')] object-fill lg:bg-none">
       <div className="flex items-center justify-center py-12 h-full">
@@ -96,7 +97,34 @@ const Signup = ({setState})=>{
 }
 
 const Login = ({setState})=>{
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('https://dms-api.apps.ginnsltd.com/v1/docs#/default/api_views_login', {
+        email,
+        password,
+      });
+      console.log('Login successful:', response.data);
+      // You can add more logic here (e.g., redirecting to another page after success)
+    } catch (error) {
+      console.error('Login failed:', error);
+      setErrorMessage('Login failed. Please try again.');
+    }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
     return(
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-6 rounded shadow-md w-full max-w-sm"
+      >
         <div className="mx-auto grid w-[350px] gap-6">
             <div className="grid gap-2 text-center">
             <h1 className="text-3xl font-bold">Login</h1>
@@ -111,6 +139,8 @@ const Login = ({setState})=>{
                 id="email"
                 type="email"
                 placeholder="m@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
                 />
             </div>
@@ -124,7 +154,11 @@ const Login = ({setState})=>{
                     Forgot your password?
                 </Link>
                 </div>
-                <Input id="password" type="password" required />
+                <Input type={showPassword ? 'text' : 'password'}
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required />
             </div>
             <Button type="submit" className="w-full">
                 Login
@@ -133,6 +167,9 @@ const Login = ({setState})=>{
                 Login with Google
             </Button> */}
             </div>
+            {errorMessage && (
+            <div className="text-red-500 mb-4">{errorMessage}</div>
+          )}
             <div className="mt-4 text-center text-sm">
             Don&apos;t have an account?{" "}
             <span onClick={()=> setState(true)} className="underline cursor-pointer">
@@ -140,5 +177,6 @@ const Login = ({setState})=>{
             </span>
             </div>
         </div>
+      </form>
     )
 }
