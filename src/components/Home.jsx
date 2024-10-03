@@ -1,8 +1,3 @@
-
-
-
-
-
 import React, { useEffect } from "react"
 import { useNavigate } from 'react-router-dom';
 
@@ -16,6 +11,7 @@ const Home =()=>{
         };
         const user = await getUserStatus()
         if(!user){
+            alert('You are not logged in')
             navigate('/');
         }
     })[]
