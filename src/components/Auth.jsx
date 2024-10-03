@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 
 
@@ -16,6 +16,9 @@ import {
 
 const Auth = () => {
     const [state, setState] = useState(true)
+    useEffect(()=>{
+      localStorage.setItem('isUser', false);
+    })[]
     
   return (
     <div className="w-full lg:grid h-screen lg:grid-cols-2 bg-[url('/img2.jpeg')] object-fill lg:bg-none">
