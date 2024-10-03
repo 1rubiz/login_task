@@ -29,14 +29,14 @@ const Auth = () => {
             }
         </div>
       </div>
-      <div className="col-span-1 hidden bg-muted lg:flex items-center justify-center w-full max-h-screen bg-[url('/img2.jpeg')] object-contain">
+      <div className="col-span-1 hidden bg-muted lg:flex items-center justify-center w-full max-h-screen bg-[url('https://res.cloudinary.com/dotojp6xu/image/upload/v1715162527/samples/chair-and-coffee-table.jpg')] object-contain">
         {/* <BubbleAnimation/> */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        {/*<img
           src="https://res.cloudinary.com/dotojp6xu/image/upload/v1715162527/samples/chair-and-coffee-table.jpg"
           alt="Image"
           className="max-h-fit w-full object-cover dark:brightness-[0.2] dark:grayscale"
-        />
+        />*/}
             {/* <SplitText text="Hello!" className="custom-class text-black text-3xl" delay={50} /> */}
         {/* <BlobCursor/> */}
       </div>
