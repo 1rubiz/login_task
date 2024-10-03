@@ -14,7 +14,7 @@ const Home =()=>{
             alert('You are not logged in')
             navigate('/');
         }
-    })[]
+    }, []);
     return (
         <div>
             Home
