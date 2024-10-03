@@ -9,7 +9,7 @@ const Home =()=>{
           const isUser = localStorage.getItem('isUser');
           return isUser === 'true';
         };
-        const user = await getUserStatus()
+        const user = getUserStatus()
         if(!user){
             alert('You are not logged in')
             navigate('/');
