@@ -5,13 +5,13 @@ import Home from './components/Home';
 import Auth from './components/Auth';
 
 function App() {
-    const [isUser, setIsUser] = useState(false)
+    
   return (
     <BrowserRouter>
     <div className=''>
       <Routes>
         <Route path='/' element={<Auth/>}/>
-        <Route path='/home' element={Home state={isUser}/>}/>
+        <Route path='/home' element={Home/>}/>
       </Routes>
     </div>
     </BrowserRouter>
