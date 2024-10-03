@@ -21,7 +21,7 @@ const Auth = () => {
     },[]);
     
   return (
-    <div className="w-full lg:grid h-screen lg:grid-cols-2 bg-[url('/img2.jpeg')] object-fill lg:bg-none">
+    <div className="w-full lg:grid h-screen lg:grid-cols-2 object-fill lg:bg-none">
       <div className="flex items-center justify-center py-12 h-full">
         <div>
             {
