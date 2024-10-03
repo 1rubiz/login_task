@@ -8,7 +8,7 @@ function App() {
     
   return (
     <BrowserRouter>
-    <div className=''>
+    <div className='w-full'>
       <Routes>
         <Route path='/' element={<Auth/>}/>
         <Route path='/home' element={<Home/>}/>

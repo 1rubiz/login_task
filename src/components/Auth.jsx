@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react"
-
-
-
+import axios from 'axios'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -21,11 +19,11 @@ const Auth = () => {
     },[]);
     
   return (
-    <div className="w-full lg:grid h-screen lg:grid-cols-2 object-fill lg:bg-none">
-      <div className="flex items-center justify-center py-12 h-full">
-        <div>
-              <Signup setState={setState}/>
-        </div>
+    <div className="w-screen lg:grid h-screen lg:grid-cols-2">
+      <div className="flex items-center justify-center py-12 h-full col-span-1 w-full bg-[url('https://res.cloudinary.com/dotojp6xu/image/upload/v1715162527/samples/chair-and-coffee-table.jpg')] object-contain md:bg-none">
+              {
+                state ? <Signup setState={setState}/> : <Login setState={setState}/>
+              }
       </div>
       <div className="col-span-1 hidden bg-muted lg:flex items-center justify-center w-full max-h-screen bg-[url('https://res.cloudinary.com/dotojp6xu/image/upload/v1715162527/samples/chair-and-coffee-table.jpg')] object-contain">
         {/* <BubbleAnimation/> */}
@@ -122,7 +120,8 @@ const Login = ({setState})=>{
     setShowPassword(!showPassword);
   };
     return(
-        <div className="mx-auto grid w-[350px] gap-6">
+        <form onSubmit={handleSubmit}>
+        <div className="mx-auto grid w-[350px] gap-6 bg-white p-4 rounded-xl w-full">
             <div className="grid gap-2 text-center">
             <h1 className="text-3xl font-bold">Login</h1>
             <p className="text-balance text-muted-foreground">
@@ -144,12 +143,12 @@ const Login = ({setState})=>{
             <div className="grid gap-2">
                 <div className="flex items-center">
                 <Label htmlFor="password">Password</Label>
-                <Link
-                    href="/forgot-password"
-                    className="ml-auto inline-block text-sm underline"
-                >
-                    Forgot your password?
-                </Link>
+                {/* <Link */}
+                {/*     href="/forgot-password" */}
+                {/*     className="ml-auto inline-block text-sm underline" */}
+                {/* > */}
+                {/*     Forgot your password? */}
+                {/* </Link> */}
                 </div>
                 <Input type={showPassword ? 'text' : 'password'}
                   id="password"
@@ -160,19 +159,20 @@ const Login = ({setState})=>{
             <Button type="submit" className="w-full">
                 Login
             </Button>
-            {/* <Button variant="outline" className="w-full">
-                Login with Google
-            </Button> */}
+            {/* <Button variant="outline" className="w-full"> */}
+            {/*     Login with Google */}
+            {/* </Button> */}
             </div>
             {errorMessage && (
             <div className="text-red-500 mb-4">{errorMessage}</div>
           )}
             <div className="mt-4 text-center text-sm">
             Don&apos;t have an account?{" "}
-            {/*<span onClick={()=> setState(true)} className="underline cursor-pointer">
+            <span onClick={()=> setState(true)} className="underline cursor-pointer">
                 Sign up
-            </span>*/}
+            </span>
             </div>
         </div>
+    </form>
     )
 }
