@@ -112,10 +112,26 @@ const Login = ({setState})=>{
         })
     e.preventDefault();
     try {
-      const response = await axios.post('https://dms-api.apps.ginnsltd.com/v1/login', {
-        email,
-        password,
-      });
+      // const response = await axios.post('https://dms-api.apps.ginnsltd.com/v1/login', {
+      //   email,
+      //   password,
+      // },
+      //  {
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   });
+      const response = await axios.post(
+      'https://dms-api.apps.ginnsltd.com/v1/login',
+      {
+        email, 
+        password
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
       console.log('Login successful:', response);
     if(response.data.ok === true){
         localStorage.setItem('user', JSON.stringify(response.data.user));
