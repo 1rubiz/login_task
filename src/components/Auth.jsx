@@ -112,16 +112,8 @@ const Login = ({setState})=>{
         })
     e.preventDefault();
     try {
-      // const response = await axios.post('https://dms-api.apps.ginnsltd.com/v1/login', {
-      //   email,
-      //   password,
-      // },
-      //  {
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   });
       const response = await axios.post(
-      'https://dms-api.apps.ginnsltd.com/v1/login',
+      'https://login-server-o75g.onrender.com/api/login',
       {
         email, 
         password
