@@ -163,6 +163,7 @@ const Login = ({setState})=>{
                 placeholder="m@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                className='text-md placeholder:text-sm'
                 required
                 />
             </div>
@@ -180,6 +181,7 @@ const Login = ({setState})=>{
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  className='text-md placeholder:text-sm'
                   required />
             </div>
             <Button type="submit" className="w-full">
