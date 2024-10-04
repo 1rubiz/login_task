@@ -10,13 +10,16 @@ import {
     CardHeader,
     CardTitle,
   } from "@/components/ui/card"
+  import { useNavigate } from 'react-router-dom';
+  import { useToast } from "@/hooks/use-toast"
+
 
 
 const Auth = () => {
     const [state, setState] = useState(false)
-    useEffect(()=>{
-      localStorage.setItem('isUser', false);
-    },[]);
+    // useEffect(()=>{
+    //   localStorage.setItem('isUser', false);
+    // },[]);
     
   return (
     <div className="w-screen lg:grid h-screen lg:grid-cols-2">
@@ -96,21 +99,44 @@ const Signup = ({setState})=>{
 }
 
 const Login = ({setState})=>{
+    const navigate = useNavigate();
+      const { toast } = useToast()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e) => {
+    toast({
+          description: "Processing...",
+        })
     e.preventDefault();
     try {
-      const response = await axios.post('https://dms-api.apps.ginnsltd.com/v1/docs#/default/api_views_login', {
+      const response = await axios.post('https://dms-api.apps.ginnsltd.com/v1/login', {
         email,
         password,
       });
-      console.log('Login successful:', response.data);
+      console.log('Login successful:', response);
+    if(response.data.ok === true){
+        localStorage.setItem('user', JSON.stringify(response.data.user));
+    localStorage.setItem('isUser', 'true');
+        toast({
+          description: "Credentials validated",
+          variant: "success"
+        })
+        navigate('/home')
       // You can add more logic here (e.g., redirecting to another page after success)
+    }else{
+        toast({
+          description: `Login failed: ${response.data.message}`,
+          variant: "destructive"
+        })
+    }
     } catch (error) {
+        toast({
+          description: response.data.message,
+          variant: "destructive"
+        })
       console.error('Login failed:', error);
       setErrorMessage('Login failed. Please try again.');
     }
